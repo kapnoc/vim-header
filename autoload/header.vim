@@ -5,7 +5,7 @@
 "" Login   <kapnoc@memeware.net>
 ""
 "" Started on  Sat Aug 26 17:56:43 2017 Karl Toffel
-"" Last update Sat Aug 26 23:28:58 2017 Karl Toffel
+"" Last update Sun Aug 27 00:03:05 2017 Karl Toffel
 ""
 
 
@@ -82,20 +82,22 @@ endfunction
 
 " Change 'Last update' time
 function!	header#update()
-	" Is filetype in s:comments' keys ?
-	" 	If not, cannot continue
-	if !has_key(s:comments, &filetype)
-		echoerr "vim-header: Unsupported filetype: ".&filetype
+	if !s:find_header()
 		return
 	endif
 
-	if s:find_header() > 0
-		let curr_pos	= getpos(".")
-		let curr_time	= s:get_curr_time()
-		1,10s/\(.*\) Last update .*/\1 Last update µNAMEµ µTIMEµ/ge
-		1,10s/µNAMEµ/\= g:header_name/ge
-		1,10s/µTIMEµ/\= s:get_curr_time()/ge
-
-		call setpos('.', curr_pos)
+	" Is filetype in s:comments' keys ?
+	" 	If not, cannot continue
+	if !has_key(s:comments, &filetype)
+		echoerr "vim-header: Unsupported filetype: " . &filetype
+		return
 	endif
+
+	let curr_pos	= getpos(".")
+	let curr_time	= s:get_curr_time()
+	1,10s/\(.*\) Last update .*/\1 Last update µNAMEµ µTIMEµ/ge
+	1,10s/µNAMEµ/\= g:header_name/ge
+	1,10s/µTIMEµ/\= s:get_curr_time()/ge
+
+	call setpos('.', curr_pos)
 endfunction
