@@ -5,7 +5,7 @@
 "" Login   <kapnoc@memeware.net>
 ""
 "" Started on  Sat Aug 26 18:11:51 2017 Karl Toffel
-"" Last update Sat Aug 26 23:19:49 2017 Karl Toffel
+"" Last update Sun Aug 27 11:02:27 2017 Karl Toffel
 ""
 
 if !exists('g:header_mail')
