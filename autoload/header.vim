@@ -4,8 +4,8 @@
 "" Made by Karl Toffel
 "" Login   <kapnoc@memeware.net>
 ""
-"" Started on  Sat Aug 26 17:56:43 2017 Karl Toffel
-"" Last update Sun Aug 27 14:35:43 2017 Karl Toffel
+"" Started on  Sat Aug 26 17:56:43 2017 by Karl Toffel
+"" Last update Sun Aug 27 14:53:01 2017 by Karl Toffel
 ""
 
 
@@ -95,7 +95,7 @@ function!	header#update()
 
 	let curr_pos	= getpos(".")
 	let curr_time	= s:get_curr_time()
-	1,10s/\(.*\) Last update .*/\1 Last update µTIMEµ µNAMEµ/ge
+	1,10s/\(.*\) Last update .*/\1 Last update µTIMEµ by µNAMEµ/ge
 	1,10s/µTIMEµ/\= s:get_curr_time()/ge
 	1,10s/µNAMEµ/\= g:header_name/ge
 
