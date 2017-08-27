@@ -5,7 +5,7 @@
 "" Login   <kapnoc@memeware.net>
 ""
 "" Started on  Sat Aug 26 17:56:43 2017 Karl Toffel
-"" Last update Sun Aug 27 11:02:22 2017 Karl Toffel
+"" Last update Sun Aug 27 14:35:43 2017 Karl Toffel
 ""
 
 
@@ -62,7 +62,7 @@ function!	header#insert()
 	" Write the actual header
 	let l:ret = append(0, l:comm_start)
 	let l:ret = append(1, l:comm_middle . " ".l:header_filerelpath."/"
-				\.l:header_filename." ".l:header_project_name)
+				\.l:header_filename." for ".l:header_project_name)
 	let l:ret = append(2, l:comm_middle . "")
 	let l:ret = append(3, l:comm_middle . " Made by ".g:header_name)
 	let l:ret = append(4, l:comm_middle . " Login   <".g:header_mail.">")
