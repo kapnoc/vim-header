@@ -1,1 +1,2 @@
 vim-header
+header=kapnoc

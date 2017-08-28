@@ -9,6 +9,7 @@
 ""
 
 
+
 "		'filetype' {'s': 'comments_start', 'm': '_middle', 'e': '_end_chars'}
 let s:comments = {
 			\ 'asm': {'s': ';;;', 'm': ';;;', 'e': ';;;'},
@@ -55,24 +56,40 @@ function!	header#insert()
 	let l:comm_start	= s:comments[&filetype]['s']
 	let l:comm_middle	= s:comments[&filetype]['m']
 	let l:comm_end		= s:comments[&filetype]['e']
-	let l:header_project_name = system("cat .project.vim | tr -d '\n'")
+	let l:header_project_name = system("head -n1 .project.vim | tr -d '\n'")
+	let l:header_project_optns = system("head -n2 .project.vim | tail -n1 | tr -d '\n'")
 	let l:header_filename = expand('%:t')
 	let l:header_filerelpath = expand("%:h")
 
 	" Write the actual header
-	let l:ret = append(0, l:comm_start)
-	let l:ret = append(1, l:comm_middle . " ".l:header_filerelpath."/"
-				\.l:header_filename." for ".l:header_project_name)
-	let l:ret = append(2, l:comm_middle . "")
-	let l:ret = append(3, l:comm_middle . " Made by ".g:header_name)
-	let l:ret = append(4, l:comm_middle . " Login   <".g:header_mail.">")
-	let l:ret = append(5, l:comm_middle . "")
-	let l:ret = append(6, l:comm_middle . " Started on  ".s:get_curr_time()
-				\." by ".g:header_name)
-	let l:ret = append(7, l:comm_middle . " Last update ".s:get_curr_time()
-				\." by ".g:header_name)
-	let l:ret = append(8, l:comm_end)
-	let l:ret = append(9, "")
+	if matchstr(l:header_project_optns, 'kapnoc') != ""
+		let l:ret = append(0, l:comm_start)
+		let l:ret = append(1, l:comm_middle . " ".l:header_filerelpath."/"
+					\.l:header_filename." for ".l:header_project_name)
+		let l:ret = append(2, l:comm_middle . "")
+		let l:ret = append(3, l:comm_middle . " Made by ".g:header_name)
+		let l:ret = append(4, l:comm_middle . "         <".g:header_mail.">")
+		let l:ret = append(5, l:comm_middle . "")
+		let l:ret = append(6, l:comm_middle . " Started on  ".s:get_curr_time()
+					\." by ".g:header_name)
+		let l:ret = append(7, l:comm_middle . " Last update ".s:get_curr_time()
+					\." by ".g:header_name)
+		let l:ret = append(8, l:comm_end)
+		let l:ret = append(9, "")
+	else
+		let l:ret = append(0, l:comm_start)
+		let l:ret = append(1, l:comm_middle . " ".l:header_project_name)
+		let l:ret = append(2, l:comm_middle . "")
+		let l:ret = append(3, l:comm_middle . " ".l:header_filerelpath."/"
+					\.l:header_filename)
+		let l:ret = append(4, l:comm_middle . "")
+		let l:ret = append(5, l:comm_middle . " Started on  ".s:get_curr_time()
+					\." by ".g:header_name)
+		let l:ret = append(6, l:comm_middle . " Last update ".s:get_curr_time()
+					\." by ".g:header_name)
+		let l:ret = append(7, l:comm_end)
+		let l:ret = append(8, "")
+	endif
 
 	" Move to end of header
 	:11
