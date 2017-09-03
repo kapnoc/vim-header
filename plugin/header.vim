@@ -5,7 +5,7 @@
 ""         <kapnoc@memeware.net>
 ""
 "" Started on  Sat Aug 26 18:11:51 2017 Karl Toffel
-"" Last update Sat Sep 02 22:05:46 2017 Karl Toffel
+"" Last update Sun Sep 03 22:02:03 2017 Karl Toffel
 ""
 
 if !exists('g:header_mail')
@@ -22,3 +22,5 @@ command! InsertHeader call header#insert()
 autocmd FileWritePre,BufWritePre * call header#update()
 
 nmap <Leader>h :InsertHeader<CR>
+
+autocmd BufNewFile,BufRead *.h set filetype=c
