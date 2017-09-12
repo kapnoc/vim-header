@@ -5,7 +5,7 @@
 ""         <kapnoc@memeware.net>
 ""
 "" Started on  Sat Aug 26 17:56:43 2017 Karl Toffel
-"" Last update Sat Sep 02 22:32:08 2017 Karl Toffel
+"" Last update Tue Sep 12 16:34:43 2017 Tanguy Gerome
 ""
 
 "	'filetype' {'s': 'comments_start', 'm': '_middle', 'e': '_end_chars'}
@@ -16,8 +16,9 @@ let s:comments = {
 			\ 'make': {'s': '##', 'm': '##', 'e': '##'},
 			\ 'python': {'s': '##', 'm': '##', 'e': '##'},
 			\ 'sh': {'s': '##', 'm': '##', 'e': '##'},
+			\ 'dockerfile': {'s': '##', 'm': '##', 'e': '##'},
 			\ 'tex': {'s': '%%', 'm': '%%', 'e': '%%'},
-			\ 'vim': {'s': '""', 'm': '""', 'e': '""'},
+			\ 'vim': {'s': '""', 'm': '""', 'e': '""'}
 			\ }
 
 
