@@ -1,3 +1,3 @@
 vim-header
-header=kapnoc
+header=custom
 indent=

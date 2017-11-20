@@ -5,7 +5,7 @@
 ""         <kapnoc@memeware.net>
 ""
 "" Started on  Sat Aug 26 17:56:43 2017 Karl Toffel
-"" Last update Tue Sep 12 16:34:43 2017 Tanguy Gerome
+"" Last update Mon Nov 20 10:14:59 2017 Tanguy Gérôme
 ""
 
 "	'filetype' {'s': 'comments_start', 'm': '_middle', 'e': '_end_chars'}
@@ -70,6 +70,7 @@ function!	header#insert()
 	let l:comm_middle	= s:comments[&filetype]['m']
 	let l:comm_end		= s:comments[&filetype]['e']
 	let l:header_type = system("grep 'header=' .project.vim | tr -d '\n'")
+	let l:header_len = 9
 
 	" Write the actual header
 	if matchstr(l:header_type, 'kapnoc') != ""
@@ -105,12 +106,13 @@ function!	header#insert()
 		let l:ret = append(6, l:comm_middle." Last update ~TIME~ ~NAME~")
 		let l:ret = append(7, l:comm_end)
 		let l:ret = append(8, "")
+		let l:header_len = 8
 	endif
 
 	call s:set_vars()
 
 	" Move to end of header
-	:11
+	cal cursor(l:header_len + 4, 0)
 endfunction
 
 
