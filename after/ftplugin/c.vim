@@ -5,12 +5,10 @@
 ""         <kapnoc@memeware.net>
 ""
 "" Started on  Tue Aug 29 08:25:25 2017 Karl Toffel
-"" Last update Wed Jan 10 09:33:32 2018 Tanguy Gérôme
+"" Last update Wed Jan 10 09:35:43 2018 Tanguy Gérôme
 ""
 
 let s:proj_indent = system("grep 'indent=' .project.vim | tr -d '\n'")
-
-filetype plugin indent on
 
 if matchstr(s:proj_indent, 'epi') != ""
 	setlocal comments=s:/*,m:**,ex:*/
